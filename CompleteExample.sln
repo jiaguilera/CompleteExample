@@ -15,6 +15,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CompleteExample.Database", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC8A0DBE-0910-4784-A828-183AA346C5E3}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		README.md = README.md
 	EndProjectSection
 EndProject
