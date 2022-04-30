@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CompleteExample.Entities
+﻿namespace CompleteExample.Entities
 {
     public class Student
     {
-        [Key]
         public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace CompleteExample.Entities
 {
     public class Instructor
     {
-        [Key]
         public int InstructorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
