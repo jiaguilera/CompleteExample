@@ -1,10 +1,8 @@
 using CompleteExample.Entities;
-using NUnit.Framework;
-using System.Configuration;
-using System.Threading.Tasks;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace CompleteExample.Logic.Tests
 {
