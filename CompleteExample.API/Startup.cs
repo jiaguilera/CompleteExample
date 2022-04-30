@@ -1,4 +1,5 @@
 using CompleteExample.Entities;
+using CompleteExample.Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace CompleteExample.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCqrsHandlers();
 
             services.AddDbContext<CompleteExampleDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
