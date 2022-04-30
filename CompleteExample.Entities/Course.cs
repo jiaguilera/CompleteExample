@@ -1,4 +1,6 @@
-﻿namespace CompleteExample.Entities
+﻿using System.Collections.Generic;
+
+namespace CompleteExample.Entities
 {
     public class Course
     {
@@ -9,5 +11,7 @@
 
         public int InstructorId { get; set; }
 
+        public Instructor Instructor { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

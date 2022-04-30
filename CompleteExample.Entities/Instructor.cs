@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CompleteExample.Entities
 {
@@ -9,5 +10,7 @@ namespace CompleteExample.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public DateTime StartDate { get; set; }
+
+        public ICollection<Course> Courses { get; set; }
     }
 }
