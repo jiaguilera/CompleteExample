@@ -15,10 +15,10 @@ namespace CompleteExample.Logic
 
         public Result(string error)
         {
-           _error = error;
+            _error = error;
         }
 
-        public U Select<U>(Func<T,U> result, Func<string,U> error)
+        public U Select<U>(Func<T, U> result, Func<string, U> error)
         {
             if (_error != default)
             {

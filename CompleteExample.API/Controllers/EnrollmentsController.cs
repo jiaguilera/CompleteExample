@@ -1,8 +1,8 @@
 ﻿using CompleteExample.Logic;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CompleteExample.API.Controllers
 {
@@ -19,7 +19,7 @@ namespace CompleteExample.API.Controllers
         }
 
         [HttpGet("topstudents")]
-        public async Task<IEnumerable<EnrollmentDTO>> ByInstructor([FromServices] IEnrollmentQueries queries)
+        public async Task<IEnumerable<EnrollmentDTO>> TopStudents([FromServices] IEnrollmentQueries queries)
         {
             var results = await queries.TopStudents();
 
@@ -27,7 +27,7 @@ namespace CompleteExample.API.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> UpdateEnrollment([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
+        public async Task<IActionResult> AddOrUpdateEnrollment([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
         {
             var results = await commands.AddOrUpdateStudentsGrade(enrollment.CourseId, enrollment.StudentId, enrollment.Grade);
 
