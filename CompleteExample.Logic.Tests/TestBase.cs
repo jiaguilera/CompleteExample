@@ -69,8 +69,8 @@ namespace CompleteExample.Logic.Tests
                 new Enrollment { CourseId = _course1.CourseId, StudentId = _student2.StudentId, Grade = 40 },
                 new Enrollment { CourseId = _course1.CourseId, StudentId = _student3.StudentId, Grade = 50 },
                 new Enrollment { CourseId = _course1.CourseId, StudentId = _student4.StudentId, Grade = 90 },
-                new Enrollment { CourseId = _course3.CourseId, StudentId = _student1.StudentId, Grade = 10 },
-                new Enrollment { CourseId = _course3.CourseId, StudentId = _student2.StudentId, Grade = 20 },
+                new Enrollment { CourseId = _course3.CourseId, StudentId = _student1.StudentId },
+                new Enrollment { CourseId = _course3.CourseId, StudentId = _student2.StudentId },
                 new Enrollment { CourseId = _course3.CourseId, StudentId = _student3.StudentId, Grade = 30 },
                 new Enrollment { CourseId = _course3.CourseId, StudentId = _student4.StudentId, Grade = 40 }
                 );

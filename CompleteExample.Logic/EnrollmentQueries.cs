@@ -21,6 +21,7 @@ namespace CompleteExample.Logic
         public async ValueTask<IEnumerable<Enrollment>> TopStudents()
         {
             var topByCourse = await _collection
+                .Where(e => e.Grade.HasValue)
                 .GroupBy(e => e.CourseId)
                 .Select(c => c.OrderByDescending(e => e.Grade).Take(3))
                 .ToListAsync();

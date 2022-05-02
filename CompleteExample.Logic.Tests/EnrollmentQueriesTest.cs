@@ -35,16 +35,16 @@ namespace CompleteExample.Logic.Tests
             var subject = new EnrollmentQueries(_context);
             var result = await subject.TopStudents();
 
-            Assert.AreEqual(6, result.Count());
+            Assert.AreEqual(5, result.Count());
             Assert.IsTrue(result.Any(x => x.CourseId == _course1.CourseId && x.StudentId == _student1.StudentId));
             Assert.IsTrue(result.Any(x => x.CourseId == _course1.CourseId && x.StudentId == _student3.StudentId));
             Assert.IsTrue(result.Any(x => x.CourseId == _course1.CourseId && x.StudentId == _student4.StudentId));
-            Assert.IsTrue(result.Any(x => x.CourseId == _course3.CourseId && x.StudentId == _student2.StudentId));
             Assert.IsTrue(result.Any(x => x.CourseId == _course3.CourseId && x.StudentId == _student3.StudentId));
             Assert.IsTrue(result.Any(x => x.CourseId == _course3.CourseId && x.StudentId == _student4.StudentId));
 
             Assert.IsFalse(result.Any(x => x.CourseId == _course1.CourseId && x.StudentId == _student2.StudentId));
             Assert.IsFalse(result.Any(x => x.CourseId == _course3.CourseId && x.StudentId == _student1.StudentId));
+            Assert.IsFalse(result.Any(x => x.CourseId == _course3.CourseId && x.StudentId == _student2.StudentId));
         }
     }
 }
