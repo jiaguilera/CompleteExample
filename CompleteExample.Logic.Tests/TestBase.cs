@@ -23,13 +23,13 @@ namespace CompleteExample.Logic.Tests
 
 
         [OneTimeTearDown]
-        public async Task RunAfterAllTests()
+        public async Task RunAfterAllTestsAsync()
         {
             await _context.Database.EnsureDeletedAsync();
         }
 
         [OneTimeSetUp]
-        public async Task RunBeforeAnyTests()
+        public async Task RunBeforeAnyTestsAsync()
         {
             var config = new ConfigurationBuilder()
               .AddJsonFile("appsettings.json")
@@ -39,10 +39,10 @@ namespace CompleteExample.Logic.Tests
             optionBuilder.UseSqlServer(config.GetConnectionString("SchoolContext"));
             _context = new CompleteExampleDBContext(optionBuilder.Options);
 
-            await SeedTestData();
+            await SeedTestDataAsync();
         }
 
-        private async Task SeedTestData()
+        private async Task SeedTestDataAsync()
         {
             await _context.Database.EnsureCreatedAsync();
 

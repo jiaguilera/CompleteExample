@@ -13,12 +13,12 @@ namespace CompleteExample.Logic
         public EnrollmentQueries(CompleteExampleDBContext context)
             => _collection = context.Enrollment.AsNoTracking();
 
-        public async ValueTask<IEnumerable<Enrollment>> ByInstructor(int instructorId)
+        public async ValueTask<IEnumerable<Enrollment>> ByInstructorAsync(int instructorId)
             => await _collection
                 .Where(e => e.Course.InstructorId == instructorId)
                 .ToListAsync();
 
-        public async ValueTask<IEnumerable<Enrollment>> TopStudents()
+        public async ValueTask<IEnumerable<Enrollment>> TopStudentsAsync()
         {
             var topByCourse = await _collection
                 .Where(e => e.Grade.HasValue)

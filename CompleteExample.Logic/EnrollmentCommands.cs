@@ -12,9 +12,9 @@ namespace CompleteExample.Logic
         public EnrollmentCommands(CompleteExampleDBContext context)
             => _context = context;
 
-        public ValueTask<Result<Enrollment>> AddOrUpdateStudentsGrade(int courseId, int studentId, decimal? grade)
-            => _context.ValidateExists<Course>(courseId)
-                .ThenAsync(_ => _context.ValidateExists<Student>(studentId))
+        public ValueTask<Result<Enrollment>> AddOrUpdateStudentsGradeAsync(int courseId, int studentId, decimal? grade)
+            => _context.ValidateExistsAsync<Course>(courseId)
+                .ThenAsync(_ => _context.ValidateExistsAsync<Student>(studentId))
                 .ThenAsync(async _ =>
                 {
                     var enrollment = await _context.Enrollment.FirstOrDefaultAsync(e => e.CourseId == courseId && e.StudentId == studentId);

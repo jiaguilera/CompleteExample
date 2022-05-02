@@ -5,7 +5,7 @@ namespace CompleteExample.Logic.Extensions
 {
     internal static class ContextExtensions
     {
-        internal static async ValueTask<Result<T>> ValidateExists<T>(this CompleteExampleDBContext _context, params object[] keys) where T : class
+        internal static async ValueTask<Result<T>> ValidateExistsAsync<T>(this CompleteExampleDBContext _context, params object[] keys) where T : class
         {
             var entity = await _context.FindAsync<T>(keys);
 

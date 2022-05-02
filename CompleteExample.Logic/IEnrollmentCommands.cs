@@ -5,6 +5,6 @@ namespace CompleteExample.Logic
 {
     public interface IEnrollmentCommands
     {
-        ValueTask<Result<Enrollment>> AddOrUpdateStudentsGrade(int CourseId, int StudentId, decimal? grade);
+        ValueTask<Result<Enrollment>> AddOrUpdateStudentsGradeAsync(int CourseId, int StudentId, decimal? grade);
     }
 }

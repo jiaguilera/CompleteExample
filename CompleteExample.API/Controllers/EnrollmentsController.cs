@@ -11,25 +11,25 @@ namespace CompleteExample.API.Controllers
     public class EnrollmentsController : ControllerBase
     {
         [HttpGet("instructor/{instructorId}")]
-        public async Task<IEnumerable<EnrollmentDTO>> ByInstructor([FromServices] IEnrollmentQueries queries, int instructorId)
+        public async Task<IEnumerable<EnrollmentDTO>> ByInstructorAsync([FromServices] IEnrollmentQueries queries, int instructorId)
         {
-            var results = await queries.ByInstructor(instructorId);
+            var results = await queries.ByInstructorAsync(instructorId);
 
             return results.Select(EnrollmentDTO.FromEntity);
         }
 
         [HttpGet("topstudents")]
-        public async Task<IEnumerable<EnrollmentDTO>> TopStudents([FromServices] IEnrollmentQueries queries)
+        public async Task<IEnumerable<EnrollmentDTO>> TopStudentsAsync([FromServices] IEnrollmentQueries queries)
         {
-            var results = await queries.TopStudents();
+            var results = await queries.TopStudentsAsync();
 
             return results.Select(EnrollmentDTO.FromEntity);
         }
 
         [HttpPost()]
-        public async Task<IActionResult> AddOrUpdateEnrollment([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
+        public async Task<IActionResult> AddOrUpdateEnrollmentAsync([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
         {
-            var results = await commands.AddOrUpdateStudentsGrade(enrollment.CourseId, enrollment.StudentId, enrollment.Grade);
+            var results = await commands.AddOrUpdateStudentsGradeAsync(enrollment.CourseId, enrollment.StudentId, enrollment.Grade);
 
             return results.Select<IActionResult>(
                 result => Ok(EnrollmentDTO.FromEntity(result)),

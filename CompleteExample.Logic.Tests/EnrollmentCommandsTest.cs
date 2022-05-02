@@ -16,7 +16,7 @@ namespace CompleteExample.Logic.Tests
         public async Task AddOrUpdateStudentsGrade_CourseNotFound_WhenCourseDoesntExist()
         {
             var subject = new EnrollmentCommands(_context);
-            var result = await subject.AddOrUpdateStudentsGrade(default, default, default);
+            var result = await subject.AddOrUpdateStudentsGradeAsync(default, default, default);
 
             var error = result.Select(_ => string.Empty, error => error);
 
@@ -28,7 +28,7 @@ namespace CompleteExample.Logic.Tests
         public async Task AddOrUpdateStudentsGrade_CourseNotFound_WhenCourseDoesntExistAndStudentDoes()
         {
             var subject = new EnrollmentCommands(_context);
-            var result = await subject.AddOrUpdateStudentsGrade(default, _student1.StudentId, default);
+            var result = await subject.AddOrUpdateStudentsGradeAsync(default, _student1.StudentId, default);
 
             var error = result.Select(_ => string.Empty, error => error);
 
@@ -41,7 +41,7 @@ namespace CompleteExample.Logic.Tests
         public async Task AddOrUpdateStudentsGrade_StudentNotFound_WhenCourseDoesExistAndStudentDoesnt()
         {
             var subject = new EnrollmentCommands(_context);
-            var result = await subject.AddOrUpdateStudentsGrade(_course1.CourseId, default, default);
+            var result = await subject.AddOrUpdateStudentsGradeAsync(_course1.CourseId, default, default);
 
             var error = result.Select(_ => string.Empty, error => error);
 
@@ -55,7 +55,7 @@ namespace CompleteExample.Logic.Tests
             Assert.IsFalse(_context.Enrollment.Any(e => e.StudentId == _student1.StudentId && e.CourseId == _course2.CourseId));
 
             var subject = new EnrollmentCommands(_context);
-            var result = await subject.AddOrUpdateStudentsGrade(_course2.CourseId, _student1.StudentId, default);
+            var result = await subject.AddOrUpdateStudentsGradeAsync(_course2.CourseId, _student1.StudentId, default);
 
             var enrollment = result.Select(result => result, error => default);
 
@@ -73,7 +73,7 @@ namespace CompleteExample.Logic.Tests
 
             var expectedGrade = 12.34m;
             var subject = new EnrollmentCommands(_context);
-            var result = await subject.AddOrUpdateStudentsGrade(_course3.CourseId, _student1.StudentId, expectedGrade);
+            var result = await subject.AddOrUpdateStudentsGradeAsync(_course3.CourseId, _student1.StudentId, expectedGrade);
 
             var enrollment = result.Select(result => result, error => default);
 
