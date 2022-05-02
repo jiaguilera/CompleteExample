@@ -6,8 +6,8 @@ namespace CompleteExample.Logic
 {
     public interface IEnrollmentQueries
     {
-        Task<IEnumerable<Enrollment>> ByInstructor(int instructorId);
+        ValueTask<IEnumerable<Enrollment>> ByInstructor(int instructorId);
 
-        Task<IEnumerable<Enrollment>> TopStudents();
+        ValueTask<IEnumerable<Enrollment>> TopStudents();
     }
 }

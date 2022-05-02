@@ -11,23 +11,14 @@ namespace CompleteExample.Logic
         private readonly IQueryable<Enrollment> _collection;
 
         public EnrollmentQueries(CompleteExampleDBContext context)
-            : this(context.Enrollment.AsNoTracking())
-        {
-        }
+            => _collection = context.Enrollment.AsNoTracking();
 
-        internal EnrollmentQueries(IQueryable<Enrollment> collection)
-        {
-            _collection = collection;
-        }
-
-        public async Task<IEnumerable<Enrollment>> ByInstructor(int instructorId)
-        {
-            return await _collection
+        public async ValueTask<IEnumerable<Enrollment>> ByInstructor(int instructorId)
+            => await _collection
                 .Where(e => e.Course.InstructorId == instructorId)
                 .ToListAsync();
-        }
 
-        public async Task<IEnumerable<Enrollment>> TopStudents()
+        public async ValueTask<IEnumerable<Enrollment>> TopStudents()
         {
             var topByCourse = await _collection
                 .GroupBy(e => e.CourseId)
