@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CompleteExample.API.Controllers
@@ -11,25 +12,25 @@ namespace CompleteExample.API.Controllers
     public class EnrollmentsController : ControllerBase
     {
         [HttpGet("instructor/{instructorId}")]
-        public async Task<IEnumerable<EnrollmentDTO>> ByInstructorAsync([FromServices] IEnrollmentQueries queries, int instructorId)
+        public async Task<IEnumerable<EnrollmentDTO>> ByInstructorAsync([FromServices] IEnrollmentQueries queries, int instructorId, CancellationToken cancellationToken)
         {
-            var results = await queries.ByInstructorAsync(instructorId);
+            var results = await queries.ByInstructorAsync(instructorId, cancellationToken);
 
             return results.Select(EnrollmentDTO.FromEntity);
         }
 
         [HttpGet("topstudents")]
-        public async Task<IEnumerable<EnrollmentDTO>> TopStudentsAsync([FromServices] IEnrollmentQueries queries)
+        public async Task<IEnumerable<EnrollmentDTO>> TopStudentsAsync([FromServices] IEnrollmentQueries queries, CancellationToken cancellationToken)
         {
-            var results = await queries.TopStudentsAsync();
+            var results = await queries.TopStudentsAsync(cancellationToken);
 
             return results.Select(EnrollmentDTO.FromEntity);
         }
 
         [HttpPost()]
-        public async Task<IActionResult> AddOrUpdateEnrollmentAsync([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
+        public async Task<IActionResult> AddOrUpdateEnrollmentAsync([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment, CancellationToken cancellationToken)
         {
-            var results = await commands.AddOrUpdateStudentsGradeAsync(enrollment.CourseId, enrollment.StudentId, enrollment.Grade);
+            var results = await commands.AddOrUpdateStudentsGradeAsync(enrollment.CourseId, enrollment.StudentId, enrollment.Grade, cancellationToken);
 
             return results.Select<IActionResult>(
                 result => Ok(EnrollmentDTO.FromEntity(result)),
