@@ -5,8 +5,8 @@ namespace CompleteExample.Logic
     public static class IServiceProviderExtensions
     {
         public static IServiceCollection AddCqrsHandlers(this IServiceCollection service)
-        {
-            return service.AddScoped<IEnrollmentQueries, EnrollmentQueries>();
-        }
+            => service.AddScoped<IEnrollmentQueries, EnrollmentQueries>()
+                      .AddScoped<IEnrollmentCommands, EnrollmentCommands>()
+                      ;
     }
 }

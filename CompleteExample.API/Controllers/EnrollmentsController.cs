@@ -25,5 +25,16 @@ namespace CompleteExample.API.Controllers
 
             return results.Select(EnrollmentDTO.FromEntity);
         }
+
+        [HttpPost()]
+        public async Task<IActionResult> UpdateEnrollment([FromServices] IEnrollmentCommands commands, EnrollmentDTO enrollment)
+        {
+            var results = await commands.AddOrUpdateStudentsGrade(enrollment.CourseId, enrollment.StudentId, enrollment.Grade);
+
+            return results.Select<IActionResult>(
+                result => Ok(EnrollmentDTO.FromEntity(result)),
+                error => BadRequest(error)
+                );
+        }
     }
 }
