@@ -1,11 +1,11 @@
 ﻿using CompleteExample.Entities;
 using System.Threading.Tasks;
 
-namespace CompleteExample.Logic
+namespace CompleteExample.Logic.Extensions
 {
-    public static class ContextExtensions
+    internal static class ContextExtensions
     {
-        public static async ValueTask<Result<T>> ValidateExists<T>(this CompleteExampleDBContext _context, params object[] keys) where T : class
+        internal static async ValueTask<Result<T>> ValidateExists<T>(this CompleteExampleDBContext _context, params object[] keys) where T : class
         {
             var entity = await _context.FindAsync<T>(keys);
 

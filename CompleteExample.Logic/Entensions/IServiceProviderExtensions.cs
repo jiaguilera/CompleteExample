@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace CompleteExample.Logic
+namespace CompleteExample.Logic.Extensions
 {
     public static class IServiceProviderExtensions
     {

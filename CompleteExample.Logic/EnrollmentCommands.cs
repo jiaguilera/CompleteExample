@@ -1,4 +1,5 @@
 ﻿using CompleteExample.Entities;
+using CompleteExample.Logic.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

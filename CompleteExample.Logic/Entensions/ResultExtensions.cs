@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace CompleteExample.Logic
+namespace CompleteExample.Logic.Extensions
 {
     public static class ResultExtensions
     {
